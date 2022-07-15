@@ -1,0 +1,19 @@
+.nav-bar {
+  width: 200px;
+  height: 100%;
+  margin: 0px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(153, 82, 220);
+}
+.nav-element {
+  font-size: medium;
+  font-family: "Courier New", Courier, monospace;
+  margin: 20px 10px;
+}
+.nav-element a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
