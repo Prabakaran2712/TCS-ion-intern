@@ -1,0 +1,20 @@
+table {
+  border-collapse: collapse;
+  margin: 5px;
+}
+table,
+td,
+th {
+  border: 3px solid purple;
+}
+td,
+th {
+  padding: 20px;
+  color: purple;
+}
+td .name {
+  width: 20%;
+}
+td .desc {
+  width: 80%;
+}

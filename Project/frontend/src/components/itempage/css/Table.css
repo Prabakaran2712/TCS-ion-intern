@@ -1,0 +1,14 @@
+table {
+  border-collapse: collapse;
+  margin: 10px;
+}
+table,
+td,
+th {
+  border: 3px solid purple;
+}
+td,
+th {
+  padding: 20px;
+  color: purple;
+}

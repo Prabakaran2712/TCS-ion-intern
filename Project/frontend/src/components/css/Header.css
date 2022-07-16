@@ -1,0 +1,19 @@
+.header {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.header button {
+  padding: 10px;
+  font-size: large;
+  font-weight: 500;
+  border: solid 2px;
+  border-color: rgb(153, 82, 220);
+  margin: 0px 30px;
+  margin-bottom: 20px;
+}
+.header .header-content a {
+  text-decoration: none;
+  color: rgb(153, 82, 220);
+}

@@ -1,0 +1,8 @@
+.item-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.item-page-body {
+  text-align: center;
+}

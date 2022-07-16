@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Item from "./pages/Item";
 import ItemGroup from "./pages/ItemGroup";
 import ItemAdj from "./pages/Itemadjust";
+import ItemAdd from "./pages/ItemForm";
+import ItemGroupFrom from "./pages/ItemGroupForm";
+import ItemAdjForm from "./pages/ItemAdjustForm";
 const data = [
   { name: "Dashboard", link: "/", id: 1 },
   { name: "Item", link: "/item", id: 2 },
@@ -20,8 +23,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/item" element={<Item />} />
+            <Route path="/itemadd" element={<ItemAdd />} />
+            <Route path="/itemgrpadd" element={<ItemGroupFrom />} />
             <Route path="/itemgroup" element={<ItemGroup />} />
             <Route path="/itemadj" element={<ItemAdj />} />
+            <Route path="/itemadjadd" element={<ItemAdjForm />} />
           </Routes>
         </div>
       </div>
