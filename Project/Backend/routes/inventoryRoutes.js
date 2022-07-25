@@ -3,15 +3,15 @@ const {
   getItems,
   addItem,
   updateItem,
-} = require("../controller/itemController");
+} = require("../controller/item/itemController");
 const {
   getAdjustments,
   addAdjustment,
-} = require("../controller/adjusmentController");
+} = require("../controller/item/adjusmentController");
 const {
   getItemGroups,
   addItemGroup,
-} = require("../controller/itemGroupController");
+} = require("../controller/item/itemGroupController");
 
 const router = express.Router();
 

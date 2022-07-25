@@ -1,4 +1,4 @@
-const adjustment = require("../models/adjustmentModel");
+const adjustment = require("../../models/items/adjustmentModel");
 const getAdjustments = async (req, res) => {
   const adjustments = await adjustment.find({}).sort({ createdAt: -1 });
   res.json(adjustments);

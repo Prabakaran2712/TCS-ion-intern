@@ -1,4 +1,4 @@
-const itemGroup = require("../models/itemGroupModel");
+const itemGroup = require("../../models/items/itemGroupModel");
 
 const getItemGroups = async (req, res) => {
   const itemGroups = await itemGroup.find({}).sort({ createdAt: -1 });
@@ -7,6 +7,7 @@ const getItemGroups = async (req, res) => {
 
 const addItemGroup = async (req, res) => {
   const { name, description } = req.body;
+
   try {
     const newItemGroup = await itemGroup.create({
       name,

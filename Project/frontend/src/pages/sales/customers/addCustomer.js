@@ -1,0 +1,76 @@
+import { useState } from "react";
+import axios from "axios";
+const AddCustomer = () => {
+  const [customer, setCustomer] = useState({});
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+  const submitHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:4500/api/sales/customers", customer)
+      .then(() => {
+        setSuccess("A new customer was added");
+        setCustomer({});
+      })
+      .catch((err) => {
+        setError(error.message);
+      });
+  };
+  return (
+    <div>
+      <div className="title">
+        <h1>Add a new customer </h1>
+      </div>
+      {error && <div className="alert alert-danger w-50">{error}</div>}
+      {success && <div className="alert alert-success w-50">{success}</div>}
+      <div>
+        <form onSubmit={submitHandler}>
+          <div>
+            <label>Customer Name:</label>
+            <input
+              required={true}
+              value={customer.customerName || ""}
+              onChange={(e) => {
+                setCustomer({ ...customer, customerName: e.target.value });
+              }}
+            ></input>
+          </div>
+          <div>
+            <label>Company:</label>
+            <input
+              required={true}
+              value={customer.company || ""}
+              onChange={(e) => {
+                setCustomer({ ...customer, company: e.target.value });
+              }}
+            ></input>
+          </div>
+          <div>
+            <label>Email:</label>
+            <input
+              required={true}
+              value={customer.email || ""}
+              onChange={(e) => {
+                setCustomer({ ...customer, email: e.target.value });
+              }}
+            ></input>
+          </div>
+          <div>
+            <label>Mobile:</label>
+            <input
+              required={true}
+              value={customer.mobile || ""}
+              onChange={(e) => {
+                setCustomer({ ...customer, mobile: e.target.value });
+              }}
+            ></input>
+          </div>
+          <div className="">
+            <button type="submit"> ADD </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+export default AddCustomer;

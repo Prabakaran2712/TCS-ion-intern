@@ -1,4 +1,4 @@
-const Item = require("../models/itemModel");
+const Item = require("../../models/items/itemModel");
 const mongoose = require("mongoose");
 const getItems = async (req, res) => {
   const items = await Item.find({}).sort({ createdAt: -1 });
