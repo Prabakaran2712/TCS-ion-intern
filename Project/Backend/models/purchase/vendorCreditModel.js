@@ -12,12 +12,12 @@ const vendorCreditSchema = mongoose.Schema(
     },
     vendor: {
       type: mongoose.Types.ObjectId,
-      ref: "Vendor",
+      ref: "vendors",
       required: true,
     },
     items: {
       type: [mongoose.Types.ObjectId],
-      ref: "Item",
+      ref: "items",
       required: true,
     },
     amount: {

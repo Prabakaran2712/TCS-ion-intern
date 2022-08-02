@@ -39,6 +39,11 @@ import PurchaseDetail from "./pages/purchase/purchaseOrder/PurchaseOrderDetails"
 import BillsList from "./pages/purchase/bills/BillList";
 import Billdetail from "./pages/purchase/bills/BillDetail";
 import AddBill from "./pages/purchase/bills/AddBill";
+import VendorCreditDetails from "./pages/purchase/vendorCredits/VendorCreditDetails";
+import AddVendorCredit from "./pages/purchase/vendorCredits/AddVendorCredit";
+import Reports from "./pages/Reports/Report";
+import VendorCreditList from "./pages/purchase/vendorCredits/VendorCreditList";
+import Dashboard from "./pages/Home/Dashboard";
 const data = [
   { name: "Dashboard", link: "/", id: 1 },
   { name: "Item", link: "/item", id: 2 },
@@ -63,6 +68,7 @@ const data = [
   { name: "Vendors", link: "/purchases/vendors", id: 21 },
   { name: "Purchase", link: "/purchases/order", id: 22 },
   { name: "Bill", link: "/purchases/bills", id: 23 },
+  { name: "Vendor Credits", link: "/purchases/vendor-credits", id: 24 },
 ];
 function App() {
   return (
@@ -71,7 +77,7 @@ function App() {
         <Sidebar details={data} />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/item" element={<Item />} />
             <Route path="/itemadd" element={<ItemAdd />} />
             <Route path="/itemgrpadd" element={<ItemGroupFrom />} />
@@ -116,7 +122,15 @@ function App() {
               <Route path="bills" element={<BillsList />} />
               <Route path="bills/:id" element={<Billdetail />} />
               <Route path="bills/add" element={<AddBill />} />
+              <Route
+                path="vendor-credits/:id"
+                element={<VendorCreditDetails />}
+              />
+              <Route path="vendor-credits" element={<VendorCreditList />} />
+              <Route path="vendor-credits/add" element={<AddVendorCredit />} />
             </Route>
+
+            <Route path="reports" element={<Reports />} />
           </Routes>
         </div>
       </div>

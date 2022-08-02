@@ -1,5 +1,5 @@
-const VendorCredit = require("../../models/purchases/vendorCreditModel");
-
+const VendorCredit = require("../../models/purchase/vendorCreditModel");
+const mongoose = require("mongoose");
 const getVendorCreditNotes = async (req, res) => {
   const vendorCredits = await VendorCredit.find({})
     .sort({ createdAt: -1 })

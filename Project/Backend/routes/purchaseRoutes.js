@@ -15,6 +15,11 @@ const {
   updateVendor,
   addVendor,
 } = require("../controller/purchase/vendorControlller");
+const {
+  getVendorCreditNotes,
+  getVendorCredit,
+  createVendorCredit,
+} = require("../controller/purchase/purchaseCreditController");
 const router = express.Router();
 router.get("/vendors", getVendors);
 router.post("/vendors", addVendor);
@@ -28,5 +33,9 @@ router.post("/purchasesorders", addPurchasesOrder);
 router.get("/bills", getBills);
 router.get("/bills/:id", getBill);
 router.post("/bills", createBill);
+
+router.get("/vendor-credits", getVendorCreditNotes);
+router.get("/vendor-credits/:id", getVendorCredit);
+router.post("/vendor-credits", createVendorCredit);
 
 module.exports = router;
