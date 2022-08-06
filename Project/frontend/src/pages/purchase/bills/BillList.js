@@ -3,6 +3,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 const BillsList = () => {
   const [loading, setLoading] = useState(true);
   const [bills, setBills] = useState([]);
@@ -23,6 +24,7 @@ const BillsList = () => {
   }
   return (
     <div>
+      <Title name="Bill"></Title>
       <Header to={"/purchases/bills/add"}></Header>
       <table className="table">
         <thead>

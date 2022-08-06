@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "date-fns";
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 
 const PaymentList = () => {
   const [loading, setLoading] = useState(true);
@@ -17,6 +19,8 @@ const PaymentList = () => {
   }
   return (
     <div>
+      <Title name="Payments"></Title>
+      <Header to={"/addpayment"}></Header>
       <table className="table">
         <thead>
           <tr>

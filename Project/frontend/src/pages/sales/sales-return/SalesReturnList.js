@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 const SalesReturnsList = () => {
   const [loading, setLoading] = useState(true);
   const [salesReturns, setSalesReturns] = useState({});
@@ -19,6 +20,8 @@ const SalesReturnsList = () => {
 
   return (
     <div>
+      <Title name="Sales Returns"></Title>
+      <Header to={"/addsalesreturn"}></Header>
       <table className="table">
         <thead>
           <tr>

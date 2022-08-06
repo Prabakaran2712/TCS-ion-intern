@@ -1,8 +1,10 @@
 .App {
   display: flex;
   flex-direction: row;
+  height: 100%;
 }
 .pages {
   float: left;
   width: 100%;
+  overflow: scroll;
 }

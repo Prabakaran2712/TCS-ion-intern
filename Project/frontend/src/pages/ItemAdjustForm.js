@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useItemsContext } from "../hooks/useItemsContext";
 import DatePicker from "react-date-picker";
+import Title from "../components/Title";
 
 const AdjustmentForm = () => {
   const {
@@ -73,15 +74,17 @@ const AdjustmentForm = () => {
 
   return (
     <div>
-      {error && <div>{error}</div>}
-      {success && <div>{success}</div>}
+      <Title name="Create Item Adjustment"></Title>
       <form onSubmit={handleSubmit(addAdjustment)}>
-        <div>
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group p-3">
           <label>Mode of adjustment</label>
           <select
             {...register("mode", {
               required: "Mode of adjustment is required",
             })}
+            className="form-control border border-dark m-2 w-75"
           >
             <option value="">Select a mode of adjustment</option>
             <option value="quantity">Quantity</option>
@@ -89,53 +92,64 @@ const AdjustmentForm = () => {
           </select>
           {errors.mode && <span>{errors.mode.message}</span>}
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>New Value of quantity/value</label>
           <input
             type="number"
             required={true}
             value={newVal}
             onChange={(e) => setNewVal(e.target.value)}
+            className="form-control border border-dark m-2 w-75"
           />
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Reference No.</label>
           <input
             {...register("refno", { required: "Reference No. is required" })}
+            className="form-control border border-dark m-2 w-75"
           />
           {errors.refno && <span>{errors.refno.message}</span>}
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Date</label>
-          <DatePicker
-            onChange={(dateVal) => {
-              // add timezone offset
-              setDate(
-                new Date(
-                  dateVal.getTime() - dateVal.getTimezoneOffset() * 60000
-                )
-              );
-            }}
-            value={date}
-          />
+          <div className="form-control border border-dark m-2 w-75">
+            <DatePicker
+              onChange={(dateVal) => {
+                // add timezone offset
+                setDate(
+                  new Date(
+                    dateVal.getTime() - dateVal.getTimezoneOffset() * 60000
+                  )
+                );
+              }}
+              value={date}
+            />
+          </div>
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Reason</label>
-          <input {...register("Reason", { required: "Reason is required" })} />
+          <input
+            className="form-control border border-dark m-2 w-75"
+            {...register("Reason", { required: "Reason is required" })}
+          />
           {errors.Reason && <span>{errors.Reason.message}</span>}
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Description</label>
           <input
+            className="form-control border border-dark m-2 w-75"
             {...register("description", {
               required: "Description is required",
             })}
           />
           {errors.description && <span>{errors.description.message}</span>}
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Item</label>
-          <select {...register("items", { required: "Item is required" })}>
+          <select
+            className="form-select border border-dark m-2 w-75"
+            {...register("items", { required: "Item is required" })}
+          >
             <option value="">Select an item</option>
             {items &&
               items.map((item) => {
@@ -148,8 +162,13 @@ const AdjustmentForm = () => {
           </select>
           {errors.items && <span>{errors.items.message}</span>}
         </div>
-        <div>
-          <button type="submit">Make adjustment</button>
+        <div className="form-group p-3">
+          <button
+            type="submit"
+            className="form-control border border-dark m-2 w-75"
+          >
+            Make adjustment
+          </button>
         </div>
       </form>
     </div>

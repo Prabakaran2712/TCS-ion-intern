@@ -1,8 +1,8 @@
 import "./css/Table.css";
 const table = (props) => {
   return (
-    <div className="item-table">
-      <table>
+    <div className="item-table mx-auto">
+      <table className="mx-auto">
         <tr>
           <td>Name</td>
           <td>Unit</td>

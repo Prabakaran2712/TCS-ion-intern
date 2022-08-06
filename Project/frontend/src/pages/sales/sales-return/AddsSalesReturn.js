@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
+import Title from "../../../components/Title";
 
 const AddSalesReturn = () => {
   const [loading, setLoading] = useState(true);
@@ -36,13 +37,16 @@ const AddSalesReturn = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Sales return</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name=" Add a new Sales return"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+
+        <div className="form-control">
           <label>Select a sales order ref. no.</label>
           <select
+            className="form-select border border-dark m-3"
             required={true}
             value={salesReturn.salesOrder}
             onChange={(e) =>
@@ -60,16 +64,23 @@ const AddSalesReturn = () => {
               })}
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label>Date:</label>
           <DatePicker
             required={true}
             value={salesReturn.date || ""}
             onChange={(e) => setSalesReturn({ ...salesReturn, date: e })}
+            className="form-control border border-dark m-3"
           />
         </div>
-
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

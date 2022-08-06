@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Title from "../../../components/Title";
 const AddCustomer = () => {
   const [customer, setCustomer] = useState({});
   const [success, setSuccess] = useState("");
@@ -18,14 +19,12 @@ const AddCustomer = () => {
   };
   return (
     <div>
-      <div className="title">
-        <h1>Add a new customer </h1>
-      </div>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
+      <Title name="Add a new customer"></Title>
       <div>
-        <form onSubmit={submitHandler}>
-          <div>
+        <form onSubmit={submitHandler} className="m-5 p-5">
+          {error && <div className="alert alert-danger w-75">{error}</div>}
+          {success && <div className="alert alert-success w-75">{success}</div>}
+          <div className="form-group">
             <label>Customer Name:</label>
             <input
               required={true}
@@ -33,9 +32,10 @@ const AddCustomer = () => {
               onChange={(e) => {
                 setCustomer({ ...customer, customerName: e.target.value });
               }}
+              className="form-control border border-dark m-3"
             ></input>
           </div>
-          <div>
+          <div className="form-group">
             <label>Company:</label>
             <input
               required={true}
@@ -43,9 +43,10 @@ const AddCustomer = () => {
               onChange={(e) => {
                 setCustomer({ ...customer, company: e.target.value });
               }}
+              className="form-control border border-dark m-3"
             ></input>
           </div>
-          <div>
+          <div className="form-group">
             <label>Email:</label>
             <input
               required={true}
@@ -53,9 +54,10 @@ const AddCustomer = () => {
               onChange={(e) => {
                 setCustomer({ ...customer, email: e.target.value });
               }}
+              className="form-control border border-dark m-3"
             ></input>
           </div>
-          <div>
+          <div className="form-group">
             <label>Mobile:</label>
             <input
               required={true}
@@ -63,10 +65,16 @@ const AddCustomer = () => {
               onChange={(e) => {
                 setCustomer({ ...customer, mobile: e.target.value });
               }}
+              className="form-control border border-dark m-3"
             ></input>
           </div>
-          <div className="">
-            <button type="submit"> ADD </button>
+          <div className="form-group">
+            <button
+              type="submit"
+              className="form-control border border-dark m-3 my-5"
+            >
+              ADD
+            </button>
           </div>
         </form>
       </div>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-date-picker";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
+import Title from "../../../components/Title";
 const AddSalesOrder = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -57,11 +58,12 @@ const AddSalesOrder = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Sales order</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Sales order"></Title>
+
+      <form onSubmit={handleSubmit} className="m-5 p-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Ref. No.:</label>
           <input
             required={true}
@@ -69,27 +71,31 @@ const AddSalesOrder = () => {
             onChange={(e) =>
               setSalesOrder({ ...salesOrder, refNo: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Order Date:</label>
           <DatePicker
             required={true}
             value={salesOrder.orderDate || ""}
             onChange={(e) => setSalesOrder({ ...salesOrder, orderDate: e })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Shipment Date:</label>
           <DatePicker
+            className="form-control border border-dark m-3"
             required={true}
             value={salesOrder.shipmentDate || ""}
             onChange={(e) => setSalesOrder({ ...salesOrder, shipmentDate: e })}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Expected Delivery Date:</label>
           <DatePicker
+            className="form-control border border-dark m-3"
             required={true}
             value={salesOrder.expectedDeliveryDate || ""}
             onChange={(e) =>
@@ -97,9 +103,10 @@ const AddSalesOrder = () => {
             }
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Customer:</label>
           <select
+            className="form-select border border-dark m-3"
             value={salesOrder.customer || ""}
             onChange={(e) =>
               setSalesOrder({ ...salesOrder, customer: e.target.value })
@@ -115,11 +122,12 @@ const AddSalesOrder = () => {
               ))}
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <h3>Items in this order</h3>
           <div>
             <div>
               <select
+                className="form-select border border-dark m-3"
                 value={curItem}
                 onChange={(e) => setCurItem(e.target.value)}
               >
@@ -168,7 +176,7 @@ const AddSalesOrder = () => {
                       <td>{thisItem.brand}</td>
                       <td>{thisItem.sellingPrice}</td>
                       <td>
-                        <FaPencilAlt
+                        <FaRegTrashAlt
                           onClick={(e) => {
                             setSelectedItems(
                               selectedItems.filter((id) => {
@@ -184,7 +192,14 @@ const AddSalesOrder = () => {
             </tbody>
           </table>
         </div>
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

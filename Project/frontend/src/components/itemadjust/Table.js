@@ -2,7 +2,7 @@ import "./css/Table.css";
 const table = (props) => {
   return (
     <div className="item-table">
-      <table>
+      <table className="mx-auto">
         <tr>
           <td>Mode</td>
           <td>Reference Number</td>

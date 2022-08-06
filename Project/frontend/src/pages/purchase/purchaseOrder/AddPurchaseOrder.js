@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-date-picker";
 import { FaRegTrashAlt } from "react-icons/fa";
-
+import Title from "../../../components/Title";
 const AddPurchaseOrder = () => {
   // form states
   const [success, setSuccess] = useState("");
@@ -62,11 +62,12 @@ const AddPurchaseOrder = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Purchase order</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Puchase Order" />
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Ref. No.:</label>
           <input
             required={true}
@@ -74,9 +75,10 @@ const AddPurchaseOrder = () => {
             onChange={(e) =>
               setPurchaseOrder({ ...purchaseOrder, refNo: e.target.value })
             }
+            className="form-control border border-dark m-2"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Order Date:</label>
           <DatePicker
             required={true}
@@ -84,11 +86,13 @@ const AddPurchaseOrder = () => {
             onChange={(e) =>
               setPurchaseOrder({ ...purchaseOrder, orderDate: e })
             }
+            className="form-control border border-dark m-2"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Vendor:</label>
           <select
+            className="form-select border border-dark m-2"
             value={purchaseOrder.vendor || ""}
             onChange={(e) =>
               setPurchaseOrder({ ...purchaseOrder, vendor: e.target.value })
@@ -109,6 +113,7 @@ const AddPurchaseOrder = () => {
           <div>
             <div>
               <select
+                className="form-select border border-dark m-2"
                 value={curItem}
                 onChange={(e) => setCurItem(e.target.value)}
               >
@@ -124,16 +129,18 @@ const AddPurchaseOrder = () => {
                     }
                   })}
               </select>
-              <div
-                className="btn btn-secondary mx-3"
-                onClick={() => {
-                  if (curItem) {
-                    setSelectedItems([...selectedItems, curItem]);
-                    setCurItem("");
-                  }
-                }}
-              >
-                Add Item
+              <div className="form-group">
+                <div
+                  className="btn btn-secondary mx-3"
+                  onClick={() => {
+                    if (curItem) {
+                      setSelectedItems([...selectedItems, curItem]);
+                      setCurItem("");
+                    }
+                  }}
+                >
+                  Add Item
+                </div>
               </div>
             </div>
           </div>
@@ -173,7 +180,11 @@ const AddPurchaseOrder = () => {
             </tbody>
           </table>
         </div>
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button type="submit" className="form-control border border-dark m-2">
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

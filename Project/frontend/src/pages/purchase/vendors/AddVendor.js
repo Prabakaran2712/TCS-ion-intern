@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Title from "../../../components/Title";
 
 const AddVendor = () => {
   const [vendor, setVendor] = useState({});
@@ -24,11 +25,12 @@ const AddVendor = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new vendor</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new vendor"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Vendor Name:</label>
           <input
             required={true}
@@ -36,22 +38,28 @@ const AddVendor = () => {
             onChange={(e) =>
               setVendor({ ...vendor, vendorName: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Company:</label>
           <input
             required={true}
             value={vendor.company || ""}
             onChange={(e) => setVendor({ ...vendor, company: e.target.value })}
+            className="  form-control
+            border
+            border-dark
+            m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Mobile:</label>
           <input
             required={true}
             value={vendor.mobile || ""}
             onChange={(e) => setVendor({ ...vendor, mobile: e.target.value })}
+            className="form-control border border-dark m-3"
           />
         </div>
         <div>
@@ -60,17 +68,26 @@ const AddVendor = () => {
             required={true}
             value={vendor.email || ""}
             onChange={(e) => setVendor({ ...vendor, email: e.target.value })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Website:</label>
           <input
             required={true}
             value={vendor.website || ""}
             onChange={(e) => setVendor({ ...vendor, website: e.target.value })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark mx-3 my-5"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

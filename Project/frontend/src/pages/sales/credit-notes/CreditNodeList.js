@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 
 const CreditNotesList = () => {
   const [loading, setLoading] = useState(true);
@@ -19,6 +21,8 @@ const CreditNotesList = () => {
 
   return (
     <div>
+      <Title name="Credit Notes"></Title>
+      <Header to={"/addcreditnote"}></Header>
       <table className="table">
         <thead>
           <tr>
@@ -36,11 +40,7 @@ const CreditNotesList = () => {
               return (
                 <tr key={creditNote._id}>
                   <td>{idx + 1}</td>
-                  <td>
-                    <Link to={`/sales/creditnotesdetails/${creditNote._id}`}>
-                      {creditNote.invoiceNo.orderNo}
-                    </Link>
-                  </td>
+                  <td>{creditNote.invoiceNo.orderNo}</td>
                   <td>
                     {format(new Date(creditNote.creditNoteDate), "dd MMM yyyy")}
                   </td>

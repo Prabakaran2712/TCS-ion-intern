@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
+import Title from "../../../components/Title";
 
 const AddPayment = () => {
   const [loading, setLoading] = useState(true);
@@ -36,11 +37,12 @@ const AddPayment = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Payment</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Payment"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Payment. No.:</label>
           <input
             required={true}
@@ -48,17 +50,19 @@ const AddPayment = () => {
             onChange={(e) =>
               setPayment({ ...payment, paymentNo: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Payment Date:</label>
           <DatePicker
+            className="form-control border border-dark m-3"
             required={true}
             value={payment.paymentDate || ""}
             onChange={(e) => setPayment({ ...payment, paymentDate: e })}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Payment Mode</label>
           <select
             value={payment.paymentMode || ""}
@@ -66,6 +70,7 @@ const AddPayment = () => {
             onChange={(e) =>
               setPayment({ ...payment, paymentMode: e.target.value })
             }
+            className="form-select border border-dark m-3"
           >
             <option value="">Select a mode</option>
             <option value="Card">Card</option>
@@ -74,9 +79,10 @@ const AddPayment = () => {
             <option value="Cash">Cash</option>
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label>Customer:</label>
           <select
+            className="form-select border border-dark m-3"
             value={payment.customer || ""}
             onChange={(e) =>
               setPayment({ ...payment, customer: e.target.value })
@@ -92,16 +98,24 @@ const AddPayment = () => {
               ))}
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label>Amount:</label>
           <input
+            className="form-control border border-dark m-3"
             type="number"
             required={true}
             value={payment.amount || ""}
             onChange={(e) => setPayment({ ...payment, amount: e.target.value })}
           />
         </div>
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

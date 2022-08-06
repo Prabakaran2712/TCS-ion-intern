@@ -1,5 +1,5 @@
 .nav-bar {
-  width: 200px;
+  width: 30rem;
   height: 100%;
   margin: 0px;
   padding: 20px;
@@ -8,7 +8,7 @@
   background-color: rgb(153, 82, 220);
 }
 .nav-element {
-  font-size: medium;
+  font-size: 20px;
   font-family: "Courier New", Courier, monospace;
   margin: 20px 10px;
 }
@@ -16,4 +16,14 @@
   font-size: 20px;
   color: white;
   text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+.accordion-header .accordion-button {
+  color: purple;
+}
+ul li:hover {
+  border: 2px solid white;
+  border-radius: 5px;
 }

@@ -6,3 +6,6 @@
 .item-page-body {
   text-align: center;
 }
+.table {
+  border: 2px solid purple;
+}

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { format, subDays } from "date-fns";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 const ViewSalesOrderList = () => {
   const [loading, setLoading] = useState(true);
   const [salesOrders, setSalesOrders] = useState([]);
@@ -32,8 +33,10 @@ const ViewSalesOrderList = () => {
   }
   return (
     <div>
-      <div className="row mb-3">
-        <div className="col-6">
+      <Title name="Sales Orders"></Title>
+      <Header to={"/addsalesorder"}></Header>
+      <div className="row  mb-3">
+        <div className="col-lg-8">
           <label className="form-label">Filter based on period</label>
           <select
             className="form-select w-25"
@@ -46,7 +49,7 @@ const ViewSalesOrderList = () => {
             <option value="1">Today</option>
           </select>
         </div>
-        <div className="col-6">
+        <div className="col-lg-4">
           Filter based on item
           <select
             className="form-select w-25"

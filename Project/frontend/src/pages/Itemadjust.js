@@ -4,6 +4,7 @@ import { useItemAdjContext } from "../hooks/ItemAdjustmentContext";
 import axios from "axios";
 import "./Item.css";
 import Table from "../components/itemadjust/Table";
+import Title from "../components/Title";
 const Item = () => {
   const { itemAdj, dispatch } = useItemAdjContext();
   useEffect(() => {
@@ -18,10 +19,10 @@ const Item = () => {
   }, [dispatch]);
   return (
     <div className="item-page">
+      <Title name="Item Adjustment"></Title>
       <Header to={"/itemadjadd"}></Header>
       <div className="item-page-body">
         <div>
-          <h1>Item Adjustment</h1>
           <div>
             <Table items={itemAdj} />
           </div>

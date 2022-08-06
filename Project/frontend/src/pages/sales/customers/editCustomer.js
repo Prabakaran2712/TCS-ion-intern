@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Title from "../../../components/Title";
 const EditCustomer = () => {
   const [customer, setCustomer] = useState({});
   const [loading, setLoading] = useState(true);
@@ -43,10 +44,12 @@ const EditCustomer = () => {
   }
   return (
     <div>
-      <h1 className="display-6">Update customer details</h1>
-      {error && <div>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name={"Update customer details"}> </Title>
+
+      <form onSubmit={handleSubmit} className="m-5 p-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+
+        <div className="form-group">
           <label>Customer Name:</label>
           <input
             required={true}
@@ -54,9 +57,10 @@ const EditCustomer = () => {
             onChange={(e) =>
               setCustomer({ ...customer, customerName: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Company:</label>
           <input
             required={true}
@@ -64,9 +68,10 @@ const EditCustomer = () => {
             onChange={(e) =>
               setCustomer({ ...customer, company: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Mobile:</label>
           <input
             required={true}
@@ -74,9 +79,10 @@ const EditCustomer = () => {
             onChange={(e) =>
               setCustomer({ ...customer, mobile: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             required={true}
@@ -84,9 +90,17 @@ const EditCustomer = () => {
             onChange={(e) =>
               setCustomer({ ...customer, email: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <button type="submit">Update</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Update
+          </button>
+        </div>
       </form>
     </div>
   );

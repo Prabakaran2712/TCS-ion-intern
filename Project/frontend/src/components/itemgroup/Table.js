@@ -2,7 +2,7 @@ import "./css/Table.css";
 const table = (props) => {
   return (
     <div className="item-table">
-      <table style={{ width: "100%" }}>
+      <table className="mx-auto">
         <tr>
           <td className="name">Name</td>
           <td className="desc">Description</td>

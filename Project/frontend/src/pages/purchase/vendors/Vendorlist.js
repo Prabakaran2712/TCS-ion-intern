@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../../../components/Header";
 import { FaPencilAlt } from "react-icons/fa";
-
+import Title from "../../../components/Title";
 const VendorsList = () => {
   const [vendors, setVendors] = useState([]);
   useEffect(() => {
@@ -16,6 +16,7 @@ const VendorsList = () => {
 
   return (
     <div>
+      <Title name="Vendors"></Title>
       <Header to={"/purchases/vendors/add"}></Header>
 
       <table className="table">

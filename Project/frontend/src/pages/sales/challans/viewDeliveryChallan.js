@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 const DeliveryChallansList = () => {
   const [loading, setLoading] = useState(true);
   const [challans, setChallans] = useState([]);
@@ -23,6 +24,8 @@ const DeliveryChallansList = () => {
   }
   return (
     <div>
+      <Title name="Delivery Challan"></Title>
+      <Header to={"/addchallan"}></Header>
       <table className="table">
         <thead>
           <tr>

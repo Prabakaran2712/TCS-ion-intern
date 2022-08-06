@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Title from "../../../components/Title";
 
 const AddPackage = () => {
   const [loading, setLoading] = useState(true);
@@ -35,21 +36,24 @@ const AddPackage = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Package</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Package"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Package No.:</label>
           <input
+            className="form-control border border-dark m-3"
             required={true}
             value={pkg.packageNo || ""}
             onChange={(e) => setPkg({ ...pkg, packageNo: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Select a sales order ref. no.</label>
           <select
+            className="form-select border border-dark m-3"
             required={true}
             value={pkg.salesOrder}
             onChange={(e) => setPkg({ ...pkg, salesOrder: e.target.value })}
@@ -67,8 +71,14 @@ const AddPackage = () => {
               })}
           </select>
         </div>
-
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

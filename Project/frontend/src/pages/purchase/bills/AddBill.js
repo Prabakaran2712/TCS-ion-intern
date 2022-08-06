@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import DatePicker from "react-date-picker";
 import { FaRegTrashAlt } from "react-icons/fa";
+import Title from "../../../components/Title";
 const AddBill = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -66,19 +67,21 @@ const AddBill = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Bill</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a New Bill"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group p-3">
           <label>Order. No.:</label>
           <input
+            className="form-control border border-dark m-2 w-75"
             required={true}
             value={bill.orderNo || ""}
             onChange={(e) => setBill({ ...bill, orderNo: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Bill Date:</label>
           <DatePicker
             required={true}
@@ -86,9 +89,10 @@ const AddBill = () => {
             onChange={(e) => setBill({ ...bill, date: e })}
           />
         </div>
-        <div>
+        <div className="form-group p-3">
           <label>Vendor:</label>
           <select
+            className="form-select border border-dark m-2 w-75"
             value={bill.vendor || ""}
             onChange={(e) => setBill({ ...bill, vendor: e.target.value })}
             required={true}
@@ -104,9 +108,10 @@ const AddBill = () => {
         </div>
         <div>
           <h3>Items in this order</h3>
-          <div>
+          <div className="form-group p-3">
             <div>
               <select
+                className="form-select border border-dark m-2 w-75"
                 value={curItem}
                 onChange={(e) => setCurItem(e.target.value)}
               >
@@ -135,7 +140,7 @@ const AddBill = () => {
               </div>
             </div>
           </div>
-          <table className="table">
+          <table className="table w-75">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -171,7 +176,12 @@ const AddBill = () => {
             </tbody>
           </table>
         </div>
-        <button type="submit">Add</button>
+        <button
+          className="form-control border border-dark m-2 w-75"
+          type="submit"
+        >
+          Add
+        </button>
       </form>
     </div>
   );

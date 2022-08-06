@@ -4,6 +4,7 @@ import { useItemsContext } from "../hooks/useItemsContext";
 import axios from "axios";
 import "./Item.css";
 import Table from "../components/itempage/Table";
+import Title from "../components/Title";
 const Item = () => {
   const { items, dispatch } = useItemsContext();
   useEffect(() => {
@@ -18,13 +19,14 @@ const Item = () => {
   }, [dispatch]);
   return (
     <div className="item-page">
+      <Title name="Items"></Title>
       <Header to={"/itemadd"}></Header>
       <div className="item-page-body">
         <div>
-          <h1>Items</h1>
           <div>
             <Table items={items} />
           </div>
+          i{" "}
         </div>
       </div>
     </div>

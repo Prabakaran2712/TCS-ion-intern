@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DatePicker from "react-date-picker";
-import { FaPencilAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
+import Title from "../../../components/Title";
 const AddInvoice = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -66,13 +67,15 @@ const AddInvoice = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Invoice</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Invoice"></Title>
+
+      <form onSubmit={handleSubmit} className="m-5 p-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Order. No.:</label>
           <input
+            className="form-control border border-dark m-3"
             required={true}
             value={invoice.orderNo || ""}
             onChange={(e) =>
@@ -80,17 +83,19 @@ const AddInvoice = () => {
             }
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Invoice Date:</label>
           <DatePicker
+            className="form-control border border-dark m-3"
             required={true}
             value={invoice.invoiceDate || ""}
             onChange={(e) => setInvoice({ ...invoice, invoiceDate: e })}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Customer:</label>
           <select
+            className="form-select border border-dark m-3"
             value={invoice.customer || ""}
             onChange={(e) =>
               setInvoice({ ...invoice, customer: e.target.value })
@@ -109,8 +114,9 @@ const AddInvoice = () => {
         <div>
           <h3>Items in this order</h3>
           <div>
-            <div>
+            <div className="form-group">
               <select
+                className="form-select border border-dark m-3"
                 value={curItem}
                 onChange={(e) => setCurItem(e.target.value)}
               >
@@ -159,7 +165,7 @@ const AddInvoice = () => {
                       <td>{thisItem.brand}</td>
                       <td>{thisItem.sellingPrice}</td>
                       <td>
-                        <FaPencilAlt
+                        <FaRegTrashAlt
                           onClick={(e) => {
                             setSelectedItems(
                               selectedItems.filter((id) => {
@@ -175,7 +181,14 @@ const AddInvoice = () => {
             </tbody>
           </table>
         </div>
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

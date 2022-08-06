@@ -3,8 +3,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const table = (props) => {
   return (
-    <div className="item-table">
-      <table>
+    <div className="item-table ">
+      <table className="mx-auto">
         <tr>
           <td>Name</td>
           <td>Company</td>

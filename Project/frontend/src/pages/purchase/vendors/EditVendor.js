@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import Title from "../../../components/Title";
 
 const EditVendor = () => {
   const [vendor, setVendor] = useState(null);
@@ -43,10 +44,10 @@ const EditVendor = () => {
 
   return (
     <div>
-      <h1 className="display-6">Update vendor details</h1>
+      <Title name="Update vendor details"></Title>
       {error && <div>{error}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        <div className="form-group">
           <label>Vendor Name:</label>
           <input
             required={true}
@@ -54,41 +55,53 @@ const EditVendor = () => {
             onChange={(e) =>
               setVendor({ ...vendor, vendorName: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-control">
           <label>Company:</label>
           <input
             required={true}
             value={vendor.company}
             onChange={(e) => setVendor({ ...vendor, company: e.target.value })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Mobile:</label>
           <input
+            className="form-control border border-dark m-3 "
             required={true}
             value={vendor.mobile}
             onChange={(e) => setVendor({ ...vendor, mobile: e.target.value })}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             required={true}
             value={vendor.email}
             onChange={(e) => setVendor({ ...vendor, email: e.target.value })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Website:</label>
           <input
             required={true}
             value={vendor.website}
             onChange={(e) => setVendor({ ...vendor, website: e.target.value })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <button type="submit">Update</button>
+        <div className="form-group">
+          <button
+            type="submit"
+            className="form-control border border-dark m-3 my-5"
+          >
+            Update
+          </button>
+        </div>
       </form>
     </div>
   );

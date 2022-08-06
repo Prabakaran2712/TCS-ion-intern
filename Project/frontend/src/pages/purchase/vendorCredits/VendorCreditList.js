@@ -3,6 +3,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 
 const VendorCreditList = () => {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ const VendorCreditList = () => {
 
   return (
     <div>
+      <Title name="Vendor Credits"></Title>
       <Header to={"/purchases/vendor-credits/add"}></Header>
       <table className="table">
         <thead>

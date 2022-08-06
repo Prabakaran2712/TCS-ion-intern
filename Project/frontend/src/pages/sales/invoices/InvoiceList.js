@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 const InvoicesList = () => {
   const [loading, setLoading] = useState(true);
   const [invoices, setInvoices] = useState([]);
@@ -21,6 +22,9 @@ const InvoicesList = () => {
   }
   return (
     <div>
+      <Title name="Invoices"></Title>
+      <Header to={"/addinvoice"}></Header>
+
       <table className="table">
         <thead>
           <tr>

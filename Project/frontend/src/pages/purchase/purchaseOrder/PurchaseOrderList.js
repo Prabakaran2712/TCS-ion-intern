@@ -3,7 +3,7 @@ import { format, subDays } from "date-fns";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../../../components/Header";
-
+import Title from "../../../components/Title";
 const PurchaseOrdersList = () => {
   const [loading, setLoading] = useState(true);
   const [purchaseOrders, setPurchaseOrders] = useState([]);
@@ -37,9 +37,10 @@ const PurchaseOrdersList = () => {
   }
   return (
     <div>
+      <Title name="Purchases"></Title>
       <Header to={"/purchases/order/add"}></Header>
       <div className="row mb-3">
-        <div className="col-6">
+        <div className="col-8">
           Filter based on vendor
           <select
             className="form-select w-25"
@@ -55,7 +56,7 @@ const PurchaseOrdersList = () => {
               ))}
           </select>
         </div>
-        <div className="col-6">
+        <div className="col-4">
           Filter based on item
           <select
             className="form-select w-25"

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-
+import Title from "../../../components/Title";
+import Header from "../../../components/Header";
 const PackagesList = () => {
   const [loading, setLoading] = useState(true);
   const [packages, setPackages] = useState({});
@@ -19,6 +20,8 @@ const PackagesList = () => {
 
   return (
     <div>
+      <Title name="Packages"></Title>
+      <Header to={"/addpackage"}></Header>
       <table className="table">
         <thead>
           <tr>

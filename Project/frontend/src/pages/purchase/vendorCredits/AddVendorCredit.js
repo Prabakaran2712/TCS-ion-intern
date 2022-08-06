@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import DatePicker from "react-date-picker";
 import { FaRegTrashAlt } from "react-icons/fa";
+import Title from "../../../components/Title";
 const AddVendorCredit = () => {
   // form states
   const [success, setSuccess] = useState("");
@@ -75,11 +76,12 @@ const AddVendorCredit = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Vendor Credit</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Vendor Credit"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Credit note no.:</label>
           <input
             required={true}
@@ -87,23 +89,26 @@ const AddVendorCredit = () => {
             onChange={(e) =>
               setVendorCredit({ ...vendorCredit, creditNoteNo: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Date:</label>
           <DatePicker
             required={true}
             value={vendorCredit.date}
             onChange={(e) => setVendorCredit({ ...vendorCredit, date: e })}
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Vendor:</label>
           <select
             value={vendorCredit.vendor}
             onChange={(e) =>
               setVendorCredit({ ...vendorCredit, vendor: e.target.value })
             }
+            className="form-select border border-dark m-3"
             required={true}
           >
             <option value="">Select a vendor</option>
@@ -115,13 +120,14 @@ const AddVendorCredit = () => {
               ))}
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <h3>Items in this credit</h3>
           <div>
-            <div>
+            <div className="form-group">
               <select
                 value={curItem}
                 onChange={(e) => setCurItem(e.target.value)}
+                className="form-select border border-dark m-3"
               >
                 <option value="">Choose an item to add</option>
                 {items &&
@@ -136,7 +142,7 @@ const AddVendorCredit = () => {
                   })}
               </select>
               <div
-                className="btn btn-secondary mx-3"
+                className="btn btn-secondary "
                 onClick={() => {
                   if (curItem) {
                     setSelectedItems([...selectedItems, curItem]);
@@ -184,7 +190,11 @@ const AddVendorCredit = () => {
             </tbody>
           </table>
         </div>
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button type="submit" className="form-control border border-dark m-3">
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

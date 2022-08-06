@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DatePicker from "react-date-picker";
+import Title from "../../../components/Title";
 
 const AddCreditNotes = () => {
   const [loading, setLoading] = useState(true);
@@ -36,11 +37,12 @@ const AddCreditNotes = () => {
 
   return (
     <div>
-      <h1 className="display-6">Add a new Credit Note</h1>
-      {error && <div className="alert alert-danger w-50">{error}</div>}
-      {success && <div className="alert alert-success w-50">{success}</div>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <Title name="Add a new Credit Note"></Title>
+
+      <form onSubmit={handleSubmit} className="p-5 m-5">
+        {error && <div className="alert alert-danger w-75">{error}</div>}
+        {success && <div className="alert alert-success w-75">{success}</div>}
+        <div className="form-group">
           <label>Select a invoice order ref. no.</label>
           <select
             required={true}
@@ -48,6 +50,7 @@ const AddCreditNotes = () => {
             onChange={(e) =>
               setCreditNote({ ...creditNote, invoiceNo: e.target.value })
             }
+            className="form-select border border-dark m-3"
           >
             <option value="">Select a invoice</option>
             {invoices &&
@@ -60,7 +63,7 @@ const AddCreditNotes = () => {
               })}
           </select>
         </div>
-        <div>
+        <div className="form-group">
           <label>Reason:</label>
           <input
             required={true}
@@ -68,11 +71,13 @@ const AddCreditNotes = () => {
             onChange={(e) =>
               setCreditNote({ ...creditNote, reason: e.target.value })
             }
+            className="form-control border border-dark m-3"
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Date:</label>
           <DatePicker
+            className="form-control border border-dark m-3"
             required={true}
             value={creditNote.creditNoteDate || ""}
             onChange={(e) =>
@@ -80,8 +85,11 @@ const AddCreditNotes = () => {
             }
           />
         </div>
-
-        <button type="submit">Add</button>
+        <div className="form-group">
+          <button type="submit" className="form-control border border-dark m-3">
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );

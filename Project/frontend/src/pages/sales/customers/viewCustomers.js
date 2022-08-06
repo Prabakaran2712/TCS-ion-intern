@@ -1,6 +1,8 @@
 import axios from "axios";
 import Table from "../../../components/customerview/Table";
 import { useState, useEffect } from "react";
+import Header from "../../../components/Header";
+import Title from "../../../components/Title";
 const ViewCustomers = () => {
   const [customer, setCustomer] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -27,9 +29,8 @@ const ViewCustomers = () => {
   }
   return (
     <div>
-      <div>
-        <p className="display-6">Customers</p>
-      </div>
+      <Title name="Customers"></Title>
+      <Header to={"/customeradd"}></Header>
       {error && <div>{error}</div>}
       <Table items={customer} />{" "}
     </div>

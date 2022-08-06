@@ -1,7 +1,6 @@
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import Item from "./pages/Item";
 import ItemGroup from "./pages/ItemGroup";
 import ItemAdj from "./pages/Itemadjust";
@@ -43,32 +42,40 @@ import VendorCreditDetails from "./pages/purchase/vendorCredits/VendorCreditDeta
 import AddVendorCredit from "./pages/purchase/vendorCredits/AddVendorCredit";
 import Reports from "./pages/Reports/Report";
 import VendorCreditList from "./pages/purchase/vendorCredits/VendorCreditList";
-import Dashboard from "./pages/Home/Dashboard";
 const data = [
-  { name: "Dashboard", link: "/", id: 1 },
-  { name: "Item", link: "/item", id: 2 },
-  { name: "ItemGroup", link: "/itemgroup", id: 3 },
-  { name: "ItemAdjustment", link: "/itemadj", id: 4 },
-  { name: "Add Customer", link: "/customeradd", id: 5 },
-  { name: "View Customer", link: "/customerview", id: 6 },
-  { name: "Add sales Order", link: "/addsalesorder", id: 7 },
-  { name: "view sales Order", link: "/viewsalesorder", id: 8 },
-  { name: "Add Package", link: "/addpackage", id: 9 },
-  { name: "view Package", link: "/viewpackagelist", id: 10 },
-  { name: "Add challan", link: "/addchallan", id: 11 },
-  { name: "view challan List", link: "/viewchallan", id: 12 },
-  { name: "Add invoice", link: "/addinvoice", id: 13 },
-  { name: "view invoice", link: "/invoicelist", id: 14 },
-  { name: "Add Payment", link: "/addpayment", id: 15 },
-  { name: "view Payment List", link: "/viewpaymentlist", id: 16 },
-  { name: "Add Sales Return", link: "/addsalesreturn", id: 17 },
-  { name: "view Sales Return List", link: "/viewsalesreturnlist", id: 18 },
-  { name: "Add credit Note", link: "/addcreditnote", id: 19 },
-  { name: "view credit Note List", link: "/viewcreditnotes", id: 20 },
-  { name: "Vendors", link: "/purchases/vendors", id: 21 },
-  { name: "Purchase", link: "/purchases/order", id: 22 },
-  { name: "Bill", link: "/purchases/bills", id: 23 },
-  { name: "Vendor Credits", link: "/purchases/vendor-credits", id: 24 },
+  {
+    id: 1,
+    name: "ITEMS",
+    data: [
+      { name: "Items", link: "/item", id: 2 },
+      { name: "Groups", link: "/itemgroup", id: 3 },
+      { name: "Adjustments", link: "/itemadj", id: 4 },
+    ],
+  },
+  {
+    id: 2,
+    name: "SALES",
+    data: [
+      { name: "Customers", link: "/customerview", id: 6 },
+      { name: "Sales Orders", link: "/viewsalesorder", id: 8 },
+      { name: "Packages", link: "/viewpackagelist", id: 10 },
+      { name: "Delivery Challan", link: "/viewchallan", id: 12 },
+      { name: "Invoice", link: "/invoicelist", id: 14 },
+      { name: "Payment", link: "/viewpaymentlist", id: 16 },
+      { name: "Sales Return", link: "/viewsalesreturnlist", id: 18 },
+      { name: "Credit Notes", link: "/viewcreditnotes", id: 20 },
+    ],
+  },
+  {
+    id: 3,
+    name: "PURCHASE",
+    data: [
+      { name: "Vendors", link: "/purchases/vendors", id: 21 },
+      { name: "Purchase", link: "/purchases/order", id: 22 },
+      { name: "Bill", link: "/purchases/bills", id: 23 },
+      { name: "Vendor Credits", link: "/purchases/vendor-credits", id: 24 },
+    ],
+  },
 ];
 function App() {
   return (
@@ -77,7 +84,7 @@ function App() {
         <Sidebar details={data} />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Reports />} />
             <Route path="/item" element={<Item />} />
             <Route path="/itemadd" element={<ItemAdd />} />
             <Route path="/itemgrpadd" element={<ItemGroupFrom />} />
